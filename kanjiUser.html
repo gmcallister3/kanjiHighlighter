@@ -1,0 +1,33 @@
+<div layout="column" md-theme="jpn">
+    <md-content layout-padding md-theme="jpn">
+        <form name="api">
+            <md-input-container class="md-block">
+                <label>WK API Key</label>
+                <input name="keyInput" minlength="32" maxlength="32" ng-model="$ctrl.userSettings.apiKey" ng-blur="$ctrl.saveUserSettings()"></input>
+                <div ng-messages="api.keyInput.$error" role="alert">
+                    <div ng-message-exp="['minlength', 'maxlength']">
+                        API key must be a string containing 32 letters
+                    </div>
+            </md-input-container>
+        </form>
+        <div>
+            <md-slider-container ng-disabled="$ctrl.apiKeyConfirmed" class="md-block">
+                <span class="md-body-1">WK Level</span>
+                <md-slider min="1" max="60" ng-model="$ctrl.wkData.user.level" aria-label="WKLevel" id="WK-slider">
+                </md-slider>
+                <md-input-container class="md-block">
+                    <input type="number" ng-model="$ctrl.wkData.user.level" aria-label="WK" aria-controls="WK-slider">
+                </md-input-container>
+            </md-slider-container>
+            <md-slider-container class="md-block" ng-disabled="!$ctrl.userSettings.enableGenki">
+                <span class="md-body-1">Genki Chapter</span>
+                <md-slider min="1" max="23" ng-model="$ctrl.userSettings.GenkiLevel" aria-label="GenkiLevel" id="Genki-slider">
+                </md-slider>
+                <md-input-container>
+                    <input type="number" ng-model="$ctrl.userSettings.GenkiLevel" aria-label="Genki" aria-controls="Genki-slider">
+                </md-input-container>
+            </md-slider-container>
+            <md-checkbox ng-model="$ctrl.userSettings.enableGenki">Enable Genki</md-checkbox>
+        </div>
+    </md-content>
+</div>

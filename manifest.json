@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Kanji Highlighting Extension",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "https://www.wanikani.com/api/*",
+        "*://*/*"
+    ],
+    "browser_action": {
+        "default_title": "Menu",
+        "default_popup": "index.html"
+    },
+    "content_scripts": [{
+        "js": ["lib/jquery-3.1.1.js", "highlighter.js"],
+        "matches": ["<all_urls>"]
+    }],
+    "web_accessible_resources": ["index.html"],
+    "short_name": "Stop reading the furigana!",
+    "description": "This extension helps you apply Kanji that you have learned.",
+    "version": "1.0.0",
+    "author": "Graham McAllister"
+}
